@@ -10,13 +10,11 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class Main {
 	public static void main(String args[]) {
-		
 		Object[] passos = getEntrega("OG004330991BR");
 		
 		for (int i = 0; i < passos.length; i++) {
 			System.out.println(passos[i]);
-		}
-		
+		}	
 	}
 	
 	public static Object[] getEntrega(String cod) {
@@ -69,21 +67,21 @@ public class Main {
 					
 					String data = infosb[i].replaceAll("<td class=\"sroDtEvent\" valign=\"top\"> ", "").split(" <br />")[0];
 					
-					temp += data + "|Hora:";
+					temp += data + "]Hora:";
 					
 					String hora = infosb[i].split(" <br /> ")[1].split(" <br /> ")[0];
 					
-					temp += hora + "|Local:";
+					temp += hora + "]Local:";
 					
 					String r = infosb[i].split(" <br /> ")[2];
 					
 					if(r.contains("<label style=\"text-transform:")) {
 						String local = r.replaceAll("<label style=\"text-transform:capitalize;\">", "").split("</label>")[0].replace("&nbsp;/&nbsp;", " / ");
-						temp += local + "|Mensagem:";
+						temp += local + "]Mensagem:";
 						
 					}else {
 						String local = r.split("<br /> ")[0];
-						temp += local + "|Mensagem:";
+						temp += local + "]Mensagem:";
 					}
 					
 					if(r.contains("strong")) {
